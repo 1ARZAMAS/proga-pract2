@@ -5,7 +5,7 @@ def client() -> None:
     Эхо
     """
     HOST = '217.71.129.139'
-    PORT = 4445
+    PORT = 5398
     client_socket = socket.socket (socket.AF_INET, socket.SOCK_STREAM) 
     
     try:
