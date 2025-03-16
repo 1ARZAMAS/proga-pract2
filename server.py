@@ -5,23 +5,27 @@ def server() -> None:
     PORT = 6354
 
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-    server_socket.bind ((HOST, PORT)) 
-    
+    server_socket.bind((HOST, PORT))
     server_socket.listen(2)
+
+    print(f"Server is listening on {HOST}:{PORT}...")
+
     conn, address = server_socket.accept()
-    print("Connection from:" + str(address))
+    print("Connection from:", address)
+
     while True:
         data = conn.recv(1024).decode()
-        if not data: 
+        if not data:
             break
-    
-        print("From connected user: " + str(data))
-        
+
+        print("From connected user:", data)
+
         response = "Машина выехала по адресу: " + data
-        
-        conn. send(response.encode())
+
+        conn.send(response.encode())
 
     conn.close()
-    if __name__ == '__main__':
-        server()
+    print("Connection closed.")
+
+if __name__ == '__main__':
+    server()
